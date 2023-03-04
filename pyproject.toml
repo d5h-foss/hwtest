@@ -1,0 +1,40 @@
+[project]
+name = "hwtest"
+version = "0.0.1"
+description = "A framework for testing hardware"
+readme = "README.md"
+requires-python = ">=3.7"
+
+dependencies = []
+
+[project.optional-dependencies]
+influxdb = [
+  "influxdb-client[ciso]",
+]
+
+[tool.hatch.envs.default]
+features = [
+  "influxdb",
+]
+dependencies = [
+  "pytest",
+  "pytest-cov",
+]
+[tool.hatch.envs.default.scripts]
+cov = "pytest --cov-report=term-missing --cov-config=pyproject.toml --cov=hwtest tests/"
+
+[tool.coverage.run]
+branch = true
+parallel = true
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+  "NotImplemented",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
