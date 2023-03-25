@@ -39,7 +39,9 @@ You can also try the subprocess driver example, which runs the same test as the 
 Distributing `hwtest`
 ----------------------
 
-You may need to distribute a copy of `hwtest` to users so they can run tests against your hardware. In order to create packages you can distribute, run
+Your users or customers may need a copy of `hwtest` so they can run tests against your hardware. They can simply `pip install hwtest` as part of a setup script.
+
+If you've made changes that you need to distribute, then you can run
 
 ```
 hatch build
